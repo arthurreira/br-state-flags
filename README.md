@@ -1,9 +1,29 @@
 # Brazilian State Flags
 
 # Try it Live
-[Open Demo](https://br-state-flags-demo.arthurreira.dev/#/)
+<details>
+  <summary><strong>Preview the interactive demo</strong></summary>
+  <a href="https://br-state-flags-demo.arthurreira.dev/#/">
+    <img src="docs/br-state-flags-demo.arthurreira.dev_.png" alt="Live demo screenshot" width="720" />
+  </a>
+  <p><a href="https://br-state-flags-demo.arthurreira.dev/#/">Open the demo</a> and explore all 27 flags.</p>
+</details>
 
-![Live Demo Screenshot](docs/demo.png)
+<details>
+  <summary><strong>Preview an alternate view</strong></summary>
+  <a href="https://br-state-flags-demo.arthurreira.dev/#/">
+    <img src="docs/br-state-flags-demo.arthurreira.dev_%20(1).png" alt="Live demo alternate view screenshot" width="720" />
+  </a>
+  <p><a href="https://br-state-flags-demo.arthurreira.dev/#/">Open the demo</a> to switch layouts and props.</p>
+</details>
+
+<details>
+  <summary><strong>Preview the Finnish locale</strong></summary>
+  <a href="https://br-state-flags-demo.arthurreira.dev/#/">
+    <img src="docs/br-state-flags-demo.arthurreira.dev_%20fi.png" alt="Live demo Finnish locale screenshot" width="720" />
+  </a>
+  <p><a href="https://br-state-flags-demo.arthurreira.dev/#/">Open the demo</a> and toggle to Finnish.</p>
+</details>
 
 
 React SVG components for all 27 Brazilian state flags with geographical data and multilingual support.
