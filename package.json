@@ -1,6 +1,6 @@
 {
   "name": "br-state-flags",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Brazilian state flags as React SVG components",
   "license": "MIT",
   "type": "module",
