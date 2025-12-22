@@ -39,8 +39,17 @@ jobs:
           echo "Publishing package info:"
           cat package.json | grep -E '"name"|"version"|"description"'
       
+      - name: Verify npm auth (debug)
+        run: |
+          echo "npm version:" && npm --version
+          echo "npm registry:" && npm config get registry
+          echo "npm ping:" && npm ping || true
+          echo "npm whoami (may fail if unauthenticated):" && npm whoami || true
+          echo "npm config (sanitized):"
+          npm config list --json | node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{try{const j=JSON.parse(d);delete j['//registry.npmjs.org/:_authToken'];console.log(JSON.stringify(j,null,2));}catch(e){console.error(e);}})"
+      
       - name: Publish to npm
-        run: npm publish --provenance
+        run: npm publish --provenance --loglevel verbose
       
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
