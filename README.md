@@ -1,5 +1,8 @@
 # Brazilian State Flags
 
+# Try it Live
+[Open in CodeSandbox](https://codesandbox.io/s/github/arthurreira/br-state-flags)
+
 React SVG components for all 27 Brazilian state flags with geographical data and multilingual support.
 
 [![npm version](https://img.shields.io/npm/v/br-state-flags.svg)](https://www.npmjs.com/package/br-state-flags)
