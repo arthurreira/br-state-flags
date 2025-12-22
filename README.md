@@ -1,6 +1,6 @@
-# 🇧🇷 Brazilian State Flags
+# Brazilian State Flags
 
-Brazilian state flags as React SVG components with geographical data. Optimized, tree-shakeable, TypeScript ready, and internationally accessible.
+React SVG components for all 27 Brazilian state flags with geographical data and multilingual support.
 
 [![npm version](https://img.shields.io/npm/v/br-state-flags.svg)](https://www.npmjs.com/package/br-state-flags)
 [![License](https://img.shields.io/npm/l/br-state-flags.svg)](https://github.com/arthurreira/br-state-flags/blob/main/LICENSE)
@@ -48,13 +48,13 @@ export default function Page() {
 
 ## Available Components
 
-All 27 Brazilian state flags are available:
+All 27 Brazilian state flags are available as components:
 
-`AC`, `AL`, `AP`, `AM`, `BA`, `CE`, `DF`, `ES`, `GO`, `MA`, `MT`, `MS`, `MG`, `PA`, `PB`, `PR`, `PE`, `PI`, `RJ`, `RN`, `RS`, `RO`, `RR`, `SC`, `SP`, `SE`, `TO`
+AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
 
 ## Props
 
-Each component accepts all standard SVG props:
+Each component accepts standard SVG props:
 
 ```tsx
 <SP 
@@ -65,7 +65,7 @@ Each component accepts all standard SVG props:
 />
 ```
 
-## 🌐 Internationalization
+## Internationalization
 
 The package supports English, Portuguese (Brazil), and Finnish translations:
 
@@ -83,13 +83,13 @@ getStateName('DF', 'pt-BR'); // "Distrito Federal"
 getRegionName('Southeast', 'pt-BR'); // "Sudeste"
 
 // Finnish
-getStateName('DF', 'fi'); // "Liittovaltioalue,"
+getStateName('DF', 'fi'); // "Liittovaltioalue"
 getRegionName('South', 'fi'); // "Etelä"
 ```
 
-## 📊 Geographical Data
+## Geographical Data
 
-The package includes comprehensive data for each state:
+The package includes data for each state including population, area, coordinates, and timezone:
 
 ```tsx
 import { statesData, getStateData } from 'br-state-flags';
@@ -103,24 +103,25 @@ console.log(spData);
 //   region: 'Southeast',
 //   coordinates: { latitude: -23.5505, longitude: -46.6333 },
 //   population: 46649132,
-//   area: 248219.485, // km²
+//   area: 248219.485,
 //   timezone: 'America/Sao_Paulo',
 //   utcOffset: -3,
 //   iso: 'BR-SP'
 // }
 
-// Get localized data
 const localizedData = getStateData('SP', 'pt-BR');
 ```
 
-### Interactive Map Example
+### Create Interactive Maps
+
+Combine flags with coordinates:
 
 ```tsx
 import { SP, RJ, MG, statesData } from 'br-state-flags';
 
-const states = ['SP', 'RJ', 'MG'] as const;
-
 function BrazilMap() {
+  const states = ['SP', 'RJ', 'MG'] as const;
+  
   return (
     <div style={{ position: 'relative', width: '800px', height: '600px' }}>
       {states.map(uf => {
@@ -152,85 +153,42 @@ function BrazilMap() {
 import { getStatesByRegion } from 'br-state-flags';
 
 const southStates = getStatesByRegion('South');
-// Returns: [RS, SC, PR] with full data
-
 const northeastStates = getStatesByRegion('Northeast');
-// Returns: [MA, PI, CE, RN, PB, PE, AL, SE, BA]
 ```
 
-## 🌍 International Use Cases
+## Use Cases
 
-### For Nordic/European Users
+### For International Users
 
-Perfect for companies and developers working with Brazil:
+Useful for companies and developers working with Brazil:
 
-**Business Applications:**
-- 🏢 **Import/Export Dashboards** - Track shipments and suppliers by Brazilian state
-- 📊 **Market Analysis Tools** - Visualize regional economic data
-- 🚚 **Logistics Platforms** - Display delivery routes and regional coverage
-- 💼 **B2B Platforms** - Show business locations with flags
+- Import/Export Dashboards: Track suppliers by Brazilian state
+- Market Analysis Tools: Visualize regional data
+- Logistics Platforms: Display delivery coverage by region
+- E-commerce: Show business locations with flags
 
-**Example: Finnish Company Dashboard**
-
-```tsx
-import { SP, RJ, statesData, getStateName } from 'br-state-flags';
-
-function SupplierDashboard() {
-  const suppliers = [
-    { state: 'SP', name: 'Manufacturer A', products: 145 },
-    { state: 'RJ', name: 'Supplier B', products: 89 }
-  ];
-
-  return (
-    <div>
-      {suppliers.map(supplier => {
-        const FlagComponent = { SP, RJ }[supplier.state];
-        const stateData = statesData[supplier.state];
-        
-        return (
-          <div key={supplier.state}>
-            <FlagComponent width={32} />
-            <div>
-              <h3>{supplier.name}</h3>
-              <p>{getStateName(supplier.state, 'fi')}</p>
-              <p>Timezone: {stateData.timezone} (UTC {stateData.utcOffset})</p>
-              <p>{supplier.products} tuotetta</p>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-```
-
-**E-commerce Integration:**
+### Example: Shipping Timezone Calculator
 
 ```tsx
 import { statesData } from 'br-state-flags';
 
-// Calculate shipping estimates based on state timezone
 function getDeliveryTime(stateUF: string) {
   const state = statesData[stateUF];
-  const helsinkiOffset = 2; // UTC+2
-  const timeDifference = helsinkiOffset - state.utcOffset;
-  
   return {
     state: state.name,
     timezone: state.timezone,
-    timeDifference: `${timeDifference} hours ahead of Helsinki`,
-    bestCallTime: calculateBestCallTime(timeDifference)
+    offset: state.utcOffset
   };
 }
 ```
 
-## 📚 API Reference
+## API Reference
 
 ### Components
-- All 27 state flag components (AC, AL, AP, etc.)
+All 27 state flag components
 
 ### Data Functions
-- `statesData` - Complete data object for all states
+- `statesData` - Data object for all states
 - `getStateData(uf, locale?)` - Get data for a specific state
 - `getStatesByRegion(region)` - Get all states in a region
 - `getAllStateUFs()` - Get array of all state codes
@@ -239,49 +197,42 @@ function getDeliveryTime(stateUF: string) {
 - `getStateName(uf, locale)` - Get state name in specified language
 - `getRegionName(region, locale)` - Get region name in specified language
 - `getAvailableLocales()` - Get list of supported locales
-- `stateNames` - Translation object for all state names
-- `regionNames` - Translation object for all region names
 
 ### TypeScript Types
 
 ```tsx
 import type { 
-  BRStateUF,        // 'SP' | 'RJ' | 'MG' | ...
-  BRStateData,      // Complete state data interface
-  BRStateCoordinates, // Latitude/longitude interface
-  BRRegion,         // 'North' | 'Northeast' | ...
-  Locale            // 'en' | 'pt-BR' | 'fi'
+  BRStateUF,
+  BRStateData,
+  BRStateCoordinates,
+  BRRegion,
+  Locale
 } from 'br-state-flags';
 ```
 
-## ✨ Features
+## Features
 
-- ✅ All 27 Brazilian state flags as React components
-- ✅ Comprehensive geographical data (coordinates, population, area, timezone)
-- ✅ Multilingual support (English, Portuguese, Finnish)
-- ✅ TypeScript support with full type definitions
-- ✅ Tree-shakeable (only imports what you use)
-- ✅ Optimized SVGs
-- ✅ Works with React, Next.js, Vite, and other modern bundlers
-- ✅ SSR compatible
-- ✅ No dependencies (React as peer dependency)
+- 27 Brazilian state flags as React components
+- Geographical data for all states
+- Multilingual support (English, Portuguese, Finnish)
+- TypeScript support
+- Tree-shakeable
+- Optimized SVGs
+- Works with React, Next.js, Vite
+- SSR compatible
+- No runtime dependencies
 
-## 📦 Package Info
+## Package Info
 
-- **Size:** ~577 KB (minified)
-- **Format:** ESM + CJS
-- **React:** >=17
+- Size: ~577 KB
+- Format: ESM + CJS
+- React: >=17
 
-## 🤝 Contributing
+## License
 
-Contributions are welcome! Feel free to open issues or submit PRs on [GitHub](https://github.com/arthurreira/br-state-flags).
+MIT
 
-## 📄 License
-
-MIT © arthurreira
-
-## 🔗 Links
+## Links
 
 - [GitHub Repository](https://github.com/arthurreira/br-state-flags)
 - [npm Package](https://www.npmjs.com/package/br-state-flags)
-- [Report Issues](https://github.com/arthurreira/br-state-flags/issues)
