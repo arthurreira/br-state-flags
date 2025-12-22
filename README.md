@@ -83,7 +83,7 @@ getStateName('DF', 'pt-BR'); // "Distrito Federal"
 getRegionName('Southeast', 'pt-BR'); // "Sudeste"
 
 // Finnish
-getStateName('DF', 'fi'); // "Liittovaltioalue"
+getStateName('DF', 'fi'); // "Liittovaltioalue,"
 getRegionName('South', 'fi'); // "Etelä"
 ```
 
