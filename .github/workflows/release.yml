@@ -41,7 +41,7 @@ jobs:
       
       - name: Verify npm auth (debug)
         run: |
-          echo "npm version:" && npm --version
+          echo "npm versions:" && npm --version
           echo "npm registry:" && npm config get registry
           echo "npm ping:" && npm ping || true
           echo "npm whoami (may fail if unauthenticated):" && npm whoami || true
