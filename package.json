@@ -5,23 +5,70 @@
   "license": "MIT",
   "type": "module",
   "sideEffects": false,
-  "files": ["dist"],
+  "keywords": [
+    "brazil",
+    "brasil",
+    "flags",
+    "bandeiras",
+    "react",
+    "svg",
+    "components",
+    "brazilian-states",
+    "estados-brasileiros",
+    "geographic-data",
+    "coordinates",
+    "map",
+    "mapa",
+    "typescript",
+    "nextjs",
+    "vite",
+    "i18n",
+    "internationalization",
+    "multilingual",
+    "nordic",
+    "finland",
+    "data-visualization",
+    "ui-components"
+  ],
+  "author": "arthurreira",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arthurreira/br-state-flags.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arthurreira/br-state-flags/issues"
+  },
+  "homepage": "https://github.com/arthurreira/br-state-flags#readme",
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
   "scripts": {
     "build": "tsup",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "react": ">=17"
   },
-  "dependencies": {
-    "react": "^19.2.3"
-  },
   "devDependencies": {
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
+    "@types/react": "^18.3.27",
     "prettier": "^3.7.4",
     "svgo": "^4.0.0",
     "tsup": "^8.5.1",
