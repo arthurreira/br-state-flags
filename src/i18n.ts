@@ -116,6 +116,17 @@ export const regionNames: Record<Locale, Record<BRRegion, string>> = {
 
 /**
  * Get state name in the specified locale
+ * 
+ * @param uf - Brazilian state UF code (e.g., "SP", "RJ")
+ * @param locale - Locale for translation (default: "en")
+ * @returns Localized state name
+ * 
+ * @example
+ * ```ts
+ * getStateName('SP'); // "São Paulo"
+ * getStateName('DF', 'pt-BR'); // "Distrito Federal"
+ * getStateName('DF', 'fi'); // "Liittovaltioalue"
+ * ```
  */
 export function getStateName(uf: BRStateUF, locale: Locale = 'en'): string {
   return stateNames[locale][uf];
@@ -123,6 +134,17 @@ export function getStateName(uf: BRStateUF, locale: Locale = 'en'): string {
 
 /**
  * Get region name in the specified locale
+ * 
+ * @param region - Brazilian region name
+ * @param locale - Locale for translation (default: "en")
+ * @returns Localized region name
+ * 
+ * @example
+ * ```ts
+ * getRegionName('South'); // "South"
+ * getRegionName('South', 'pt-BR'); // "Sul"
+ * getRegionName('South', 'fi'); // "Etelä"
+ * ```
  */
 export function getRegionName(region: BRRegion, locale: Locale = 'en'): string {
   return regionNames[locale][region];
@@ -130,6 +152,14 @@ export function getRegionName(region: BRRegion, locale: Locale = 'en'): string {
 
 /**
  * Get all available locales
+ * 
+ * @returns Array of all supported locale codes
+ * 
+ * @example
+ * ```ts
+ * const locales = getAvailableLocales();
+ * // ['en', 'pt-BR', 'fi']
+ * ```
  */
 export function getAvailableLocales(): Locale[] {
   return ['en', 'pt-BR', 'fi'];

@@ -330,6 +330,16 @@ export const statesData: Record<BRStateUF, BRStateData> = {
 
 /**
  * Get state data by UF code, optionally localized
+ * 
+ * @param uf - Brazilian state UF code (e.g., "SP", "RJ")
+ * @param locale - Optional locale for localized state name (default: "en")
+ * @returns State data object with all geographical and demographic information
+ * 
+ * @example
+ * ```ts
+ * const spData = getStateData('SP');
+ * const spDataPT = getStateData('SP', 'pt-BR');
+ * ```
  */
 export function getStateData(uf: BRStateUF, locale?: Locale): BRStateData {
   const data = statesData[uf];
@@ -344,6 +354,15 @@ export function getStateData(uf: BRStateUF, locale?: Locale): BRStateData {
 
 /**
  * Get all states by region
+ * 
+ * @param region - Brazilian region name (North, Northeast, Central-West, Southeast, South)
+ * @returns Array of state data objects for all states in the specified region
+ * 
+ * @example
+ * ```ts
+ * const southStates = getStatesByRegion('South');
+ * const northeastStates = getStatesByRegion('Northeast');
+ * ```
  */
 export function getStatesByRegion(region: BRStateData['region']): BRStateData[] {
   return Object.values(statesData).filter(state => state.region === region);
@@ -351,6 +370,14 @@ export function getStatesByRegion(region: BRStateData['region']): BRStateData[] 
 
 /**
  * Get all state UF codes
+ * 
+ * @returns Array of all 27 Brazilian state UF codes
+ * 
+ * @example
+ * ```ts
+ * const allUFs = getAllStateUFs();
+ * // ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', ...]
+ * ```
  */
 export function getAllStateUFs(): BRStateUF[] {
   return Object.keys(statesData) as BRStateUF[];

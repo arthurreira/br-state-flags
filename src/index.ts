@@ -34,3 +34,10 @@ export { statesData, getStateData, getStatesByRegion, getAllStateUFs } from './d
 
 // Export i18n utilities
 export { getStateName, getRegionName, getAvailableLocales, stateNames, regionNames } from './i18n';
+
+// Export Flag component
+export { Flag } from './Flag';
+export type { FlagProps } from './Flag';
+
+// Export utility functions
+export { isValidStateUF, validateStateUF, normalizeStateUF } from './utils';

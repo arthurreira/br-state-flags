@@ -39,7 +39,7 @@ npm install br-state-flags
 
 ## Usage
 
-### React / Vite
+### Using Individual Components
 
 ```tsx
 import { SP, RJ, MG } from 'br-state-flags';
@@ -55,18 +55,45 @@ function App() {
 }
 ```
 
+### Using the Dynamic Flag Component
+
+The `Flag` component accepts a UF code as a prop, making it easier to render flags dynamically:
+
+```tsx
+import { Flag } from 'br-state-flags';
+
+function App() {
+  const states = ['SP', 'RJ', 'MG'];
+  
+  return (
+    <div>
+      {states.map(uf => (
+        <Flag key={uf} uf={uf} width={100} />
+      ))}
+    </div>
+  );
+}
+
+// With locale for accessibility labels
+<Flag uf="SP" width={100} locale="pt-BR" />
+```
+
 ### Next.js
 
 Works with both App Router and Pages Router:
 
 ```tsx
 import { SP, RJ } from 'br-state-flags';
+// or
+import { Flag } from 'br-state-flags';
 
 export default function Page() {
   return (
     <div>
       <SP width={100} />
       <RJ width={100} />
+      {/* or */}
+      <Flag uf="SP" width={100} />
     </div>
   );
 }
@@ -143,7 +170,7 @@ const localizedData = getStateData('SP', 'pt-BR');
 Combine flags with coordinates:
 
 ```tsx
-import { SP, RJ, MG, statesData } from 'br-state-flags';
+import { Flag, statesData } from 'br-state-flags';
 
 function BrazilMap() {
   const states = ['SP', 'RJ', 'MG'] as const;
@@ -151,7 +178,6 @@ function BrazilMap() {
   return (
     <div style={{ position: 'relative', width: '800px', height: '600px' }}>
       {states.map(uf => {
-        const FlagComponent = { SP, RJ, MG }[uf];
         const data = statesData[uf];
         
         return (
@@ -164,7 +190,7 @@ function BrazilMap() {
             }}
             title={`${data.name} - ${data.capital}`}
           >
-            <FlagComponent width={40} />
+            <Flag uf={uf} width={40} />
           </div>
         );
       })}
@@ -180,6 +206,29 @@ import { getStatesByRegion } from 'br-state-flags';
 
 const southStates = getStatesByRegion('South');
 const northeastStates = getStatesByRegion('Northeast');
+```
+
+### Validate State Codes
+
+```tsx
+import { isValidStateUF, validateStateUF, normalizeStateUF } from 'br-state-flags';
+
+// Type guard
+if (isValidStateUF(userInput)) {
+  // TypeScript knows userInput is BRStateUF here
+  console.log(`Valid state: ${userInput}`);
+}
+
+// Validate with error handling
+try {
+  const validUF = validateStateUF(userInput);
+  // Use validUF safely
+} catch (error) {
+  console.error('Invalid state code:', error.message);
+}
+
+// Normalize input
+const normalized = normalizeStateUF('  sp  '); // "SP"
 ```
 
 ## Use Cases
@@ -211,7 +260,8 @@ function getDeliveryTime(stateUF: string) {
 ## API Reference
 
 ### Components
-All 27 state flag components
+- **Individual flag components**: `AC`, `AL`, `AP`, `AM`, `BA`, `CE`, `DF`, `ES`, `GO`, `MA`, `MT`, `MS`, `MG`, `PA`, `PB`, `PR`, `PE`, `PI`, `RJ`, `RN`, `RS`, `RO`, `RR`, `SC`, `SP`, `SE`, `TO`
+- **`Flag` component**: Dynamic component that accepts a `uf` prop (e.g., `<Flag uf="SP" width={100} />`)
 
 ### Data Functions
 - `statesData` - Data object for all states
@@ -223,6 +273,11 @@ All 27 state flag components
 - `getStateName(uf, locale)` - Get state name in specified language
 - `getRegionName(region, locale)` - Get region name in specified language
 - `getAvailableLocales()` - Get list of supported locales
+
+### Validation Utilities
+- `isValidStateUF(value)` - Type guard to check if a string is a valid UF code
+- `validateStateUF(value)` - Validates and returns a BRStateUF, throws error if invalid
+- `normalizeStateUF(value)` - Normalizes UF code (uppercase, trim)
 
 ### TypeScript Types
 
@@ -239,8 +294,11 @@ import type {
 ## Features
 
 - 27 Brazilian state flags as React components
+- Dynamic `Flag` component for easy dynamic rendering
 - Geographical data for all states
 - Multilingual support (English, Portuguese, Finnish)
+- Input validation utilities
+- Accessibility support (ARIA labels, roles)
 - TypeScript support
 - Tree-shakeable
 - Optimized SVGs

@@ -25,10 +25,10 @@
     "i18n",
     "internationalization",
     "multilingual",
-    "nordic",
-    "finland",
     "data-visualization",
-    "ui-components"
+    "ui-components",
+    "react-components",
+    "svg-components"
   ],
   "author": "arthurreira",
   "repository": {
@@ -60,7 +60,8 @@
   "scripts": {
     "build": "tsup",
     "clean": "rm -rf dist",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "type-check": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": ">=17"
