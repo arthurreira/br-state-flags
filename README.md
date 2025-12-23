@@ -1,5 +1,11 @@
 # Brazilian State Flags
 
+[![npm version](https://img.shields.io/npm/v/br-state-flags.svg)](https://www.npmjs.com/package/br-state-flags)
+[![License](https://img.shields.io/npm/l/br-state-flags.svg)](https://github.com/arthurreira/br-state-flags/blob/main/LICENSE)
+[![Live Demo](https://img.shields.io/badge/demo-live-blue)](http://br-state-flags-demo.arthurreira.dev)
+
+React SVG components for all 27 Brazilian state flags with multilingual labels and geographical data. Explore the live demo to see flags, props, and locales in action.
+
 # Try it Live
 <details>
   <summary><strong>Preview the interactive demo</strong></summary>
@@ -27,9 +33,6 @@
 
 
 React SVG components for all 27 Brazilian state flags with geographical data and multilingual support.
-
-[![npm version](https://img.shields.io/npm/v/br-state-flags.svg)](https://www.npmjs.com/package/br-state-flags)
-[![License](https://img.shields.io/npm/l/br-state-flags.svg)](https://github.com/arthurreira/br-state-flags/blob/main/LICENSE)
 
 ## Installation
 
