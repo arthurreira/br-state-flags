@@ -43,7 +43,7 @@ jobs:
         run: |
           echo "npm versions:" && npm --version
           echo "npm registry:" && npm config get registry
-          echo "npm ping:" && npm ping || true
+          echo "npm pingg:" && npm ping || true
           echo "npm whoami (may fail if unauthenticated):" && npm whoami || true
           echo "npm config (sanitized):"
           npm config list --json | node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{try{const j=JSON.parse(d);delete j['//registry.npmjs.org/:_authToken'];console.log(JSON.stringify(j,null,2));}catch(e){console.error(e);}})"
