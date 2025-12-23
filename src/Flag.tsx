@@ -4,6 +4,9 @@ import type { BRStateUF } from './types';
 import { validateStateUF, normalizeStateUF } from './utils';
 import { getStateName } from './i18n';
 
+// Type alias for flag component
+export type FlagComponent = ComponentType<SVGProps<SVGSVGElement>>;
+
 // Import all flag components
 import AC from './flags/AC';
 import AL from './flags/AL';
@@ -34,7 +37,7 @@ import SP from './flags/SP';
 import TO from './flags/TO';
 
 // Map of UF codes to components
-const flagComponents: Record<BRStateUF, ComponentType<SVGProps<SVGSVGElement>>> = {
+export const flagComponents: Record<BRStateUF, ComponentType<SVGProps<SVGSVGElement>>> = {
   AC,
   AL,
   AM,

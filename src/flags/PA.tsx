@@ -1,5 +1,5 @@
 import type { SVGProps } from "react";
-const PA = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" {...props}><path d="M0 0h900v600H0z" style={{
+const PA = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 900 600" {...props}><path d="M0 0h900v600H0z" style={{
     fill: "#fff",
     fillOpacity: 1,
     stroke: "none",

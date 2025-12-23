@@ -1,5 +1,5 @@
 import type { SVGProps } from "react";
-const RN = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" width="1em" height="1em" {...props}><g style={{
+const RN = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" width="1em" height="1em" viewBox="0 0 900 600" {...props}><g style={{
     display: "inline"
   }}><path d="M.095.034H252.16v84.022H.095z" style={{
       display: "inline",

@@ -27,7 +27,7 @@ export { default as SP } from './flags/SP';
 export { default as TO } from './flags/TO';
 
 // Export types
-export type { BRStateUF, BRStateData, BRStateCoordinates, BRRegion, Locale } from './types';
+export type { BRStateUF, BRStateData, BRStateCoordinates, BRRegion, Locale, FlagResolutionResult, FlagComponentType } from './types';
 
 // Export data and utilities
 export { statesData, getStateData, getStatesByRegion, getAllStateUFs } from './data';
@@ -36,8 +36,14 @@ export { statesData, getStateData, getStatesByRegion, getAllStateUFs } from './d
 export { getStateName, getRegionName, getAvailableLocales, stateNames, regionNames } from './i18n';
 
 // Export Flag component
-export { Flag } from './Flag';
-export type { FlagProps } from './Flag';
+export { Flag, flagComponents } from './Flag';
+export type { FlagProps, FlagComponent } from './Flag';
+
+// Export flag utility functions
+export { getFlagComponent, requireFlagComponent, resolveFlagComponent } from './flag-utils';
 
 // Export utility functions
 export { isValidStateUF, validateStateUF, normalizeStateUF } from './utils';
+
+// Export viewBox metadata
+export { FLAG_VIEWBOXES } from './viewboxes';

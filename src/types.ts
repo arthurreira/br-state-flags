@@ -26,3 +26,24 @@ export interface BRStateData {
   utcOffset: number;
   iso: string;
 }
+
+import type { ComponentType, SVGProps } from 'react';
+
+/**
+ * Type alias for flag component (defined here to avoid circular imports)
+ */
+export type FlagComponentType = ComponentType<SVGProps<SVGSVGElement>>;
+
+/**
+ * Result of resolving a flag component with its metadata.
+ */
+export interface FlagResolutionResult {
+  /** The flag component */
+  component: FlagComponentType;
+  /** The viewBox string for the flag */
+  viewBox: string;
+  /** The validated UF code */
+  uf: BRStateUF;
+  /** Whether the UF code was valid */
+  isValid: boolean;
+}

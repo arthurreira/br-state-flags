@@ -1,5 +1,5 @@
 import type { SVGProps } from "react";
-const PR = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" style={{
+const PR = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 2500 1750" style={{
   shapeRendering: "geometricPrecision",
   textRendering: "geometricPrecision",
   imageRendering: "auto",
